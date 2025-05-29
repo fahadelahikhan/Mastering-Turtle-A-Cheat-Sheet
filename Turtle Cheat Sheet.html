@@ -1,0 +1,864 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Turtle Cheat Sheet</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="202ad5ed-0f10-8009-a961-d67cac9b5742" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/code_red.svg"/></div><h1 class="page-title">Turtle Cheat Sheet</h1><p class="page-description"></p></header><div class="page-body"><h1 id="202ad5ed-0f10-8093-98cd-fcb9284c8ab0" class="">Complete Python Turtle Graphics Cheat Sheet</h1><h2 id="202ad5ed-0f10-800d-b89b-c9f9132384b3" class="">Quick Start Setup</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-802d-bdd8-c04d6d4e00c3" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">import turtle
+
+# Method 1: Object-oriented (recommended)
+t = turtle.Turtle()
+screen = turtle.Screen()
+
+# Method 2: Functional (quick start)
+from turtle import *
+</code></pre><h2 id="202ad5ed-0f10-8075-bee0-c456a43895ae" class="">Essential Screen Setup</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8022-94df-d1123e5541d0" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">screen = turtle.Screen()
+screen.setup(width, height)              # Set window size
+screen.bgcolor(&quot;color&quot;)                  # Background color
+screen.title(&quot;Your Title&quot;)               # Window title
+screen.colormode(255)                    # Enable RGB 0-255 values
+screen.setworldcoordinates(llx, lly, urx, ury)  # Custom coordinate system
+</code></pre><h2 id="202ad5ed-0f10-808e-9ad2-d1fd719073dc" class="">Movement Commands</h2><h3 id="202ad5ed-0f10-80bf-837a-e435fe859454" class="">Basic Movement</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80ab-8d65-fdb136587e0a" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># Forward/Backward
+t.forward(distance)    # t.fd(distance) - Move forward
+t.backward(distance)   # t.bk(distance), t.back(distance) - Move backward
+
+# Turning
+t.right(angle)         # t.rt(angle) - Turn right by degrees
+t.left(angle)          # t.lt(angle) - Turn left by degrees
+
+# Direct positioning
+t.goto(x, y)           # Move to specific coordinates
+t.setx(x)              # Set x-coordinate only
+t.sety(y)              # Set y-coordinate only
+t.setheading(angle)    # t.seth(angle) - Set absolute heading
+t.home()               # Return to (0,0) facing east (0°)
+</code></pre><h2 id="202ad5ed-0f10-80da-9668-f6557e3cb045" class="">Pen Control</h2><h3 id="202ad5ed-0f10-807e-b232-d44b45fee39b" class="">Pen State</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8024-980c-d30499c5112a" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.penup()              # t.up(), t.pu() - Lift pen (no drawing)
+t.pendown()            # t.down(), t.pd() - Lower pen (draw)
+t.isdown()             # Check if pen is down (returns True/False)
+</code></pre><h3 id="202ad5ed-0f10-800a-888c-eaba002b711c" class="">Pen Appearance</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8021-8b63-ccd74b30a76c" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.pensize(width)       # t.width(width) - Set line thickness
+t.pencolor(&quot;color&quot;)    # Set pen color
+t.fillcolor(&quot;color&quot;)   # Set fill color for shapes
+t.color(&quot;pen_color&quot;, &quot;fill_color&quot;)  # Set both colors
+t.color(&quot;color&quot;)       # Set both pen and fill to same color
+</code></pre><h2 id="202ad5ed-0f10-8050-b52e-f16740f04c59" class="">Drawing Shapes &amp; Patterns</h2><h3 id="202ad5ed-0f10-808b-8b19-e8fe37d8ce76" class="">Basic Shapes</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80a4-bfbb-fbdd0c438d7f" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.circle(radius)                    # Draw complete circle
+t.circle(radius, extent)            # Draw arc (extent in degrees)
+t.circle(radius, extent, steps)     # Draw polygon approximation
+t.dot(size)                         # Draw filled circle dot
+t.dot(size, &quot;color&quot;)                # Colored dot
+</code></pre><h3 id="202ad5ed-0f10-80e0-9489-ecc890e4ade6" class="">Filling Shapes</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-803a-bb74-e4bdd1fb806f" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.begin_fill()         # Start filling mode
+# Draw your shape here
+t.end_fill()           # End filling and fill the enclosed area
+</code></pre><h3 id="202ad5ed-0f10-8068-91c4-fd141c89a3c1" class="">Writing Text</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80df-90c7-fc117b92de03" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.write(&quot;text&quot;)        # Write at current position
+t.write(&quot;text&quot;, align=&quot;center&quot;, font=(&quot;Arial&quot;, 16, &quot;bold&quot;))
+# align options: &quot;left&quot;, &quot;center&quot;, &quot;right&quot;
+# font styles: &quot;normal&quot;, &quot;bold&quot;, &quot;italic&quot;
+</code></pre><h2 id="202ad5ed-0f10-8047-9b0a-f20e10846140" class="">Turtle Appearance &amp; Behavior</h2><h3 id="202ad5ed-0f10-80b2-9ad9-c1a89b2c18eb" class="">Speed Control</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80bf-94ce-c280d4a65ca0" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.speed(speed)         # Set animation speed
+# Values: 1-10 (1=slowest, 10=fastest), 0=no animation
+# Strings: &quot;slowest&quot;, &quot;slow&quot;, &quot;normal&quot;, &quot;fast&quot;, &quot;fastest&quot;
+</code></pre><h3 id="202ad5ed-0f10-8008-bc4c-c16af954052d" class="">Turtle Visibility &amp; Shape</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-803c-8ea9-d1ceae17dd0d" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.showturtle()         # Make turtle visible
+t.hideturtle()         # Hide turtle cursor
+t.shape(&quot;shape_name&quot;)  # Change turtle shape
+# Shapes: &quot;arrow&quot;, &quot;turtle&quot;, &quot;circle&quot;, &quot;square&quot;, &quot;triangle&quot;, &quot;classic&quot;
+</code></pre><h3 id="202ad5ed-0f10-80de-88a4-d874f7b52861" class="">Stamps &amp; Cloning</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8013-9fe5-d88f60549ccc" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">stamp_id = t.stamp()   # Leave turtle shape impression
+t.clearstamp(stamp_id) # Remove specific stamp
+t.clearstamps()        # Remove all stamps
+</code></pre><h2 id="202ad5ed-0f10-80cd-94a4-ca2d62ea101e" class="">Information &amp; State Queries</h2><h3 id="202ad5ed-0f10-8023-a99f-f6364db9a768" class="">Position &amp; Orientation</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80ce-bcc3-c37e578aa85b" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.position()           # t.pos() - Get (x, y) coordinates
+t.xcor()               # Get x-coordinate
+t.ycor()               # Get y-coordinate
+t.heading()            # Get current heading angle (0-360°)
+</code></pre><h3 id="202ad5ed-0f10-8076-843b-d2af3ae89d36" class="">Distance &amp; Direction</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-809c-b96b-e42ca0e6fcc1" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.distance(x, y)       # Distance to point (x, y)
+t.towards(x, y)        # Angle toward point (x, y)
+</code></pre><h2 id="202ad5ed-0f10-8023-966c-e732caedd269" class="">Colors &amp; Styling</h2><h3 id="202ad5ed-0f10-80ca-988f-ed4aa0f3ad5a" class="">Color Formats</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8086-92f0-dcb40d17e0f0" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># Named colors
+t.color(&quot;red&quot;)
+
+# Hex colors
+t.color(&quot;#FF0000&quot;)
+
+# RGB tuples (0.0-1.0 by default)
+t.color((1.0, 0.0, 0.0))
+
+# RGB values (0-255 with colormode(255))
+screen.colormode(255)
+t.color((255, 0, 0))
+</code></pre><h3 id="202ad5ed-0f10-8080-befd-d38816856487" class="">Common Color Names</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80f4-94ed-ef35353438a2" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;yellow&quot;, &quot;orange&quot;, &quot;purple&quot;, &quot;pink&quot;,
+&quot;brown&quot;, &quot;black&quot;, &quot;white&quot;, &quot;gray&quot;, &quot;grey&quot;, &quot;cyan&quot;, &quot;magenta&quot;,
+&quot;lime&quot;, &quot;navy&quot;, &quot;olive&quot;, &quot;maroon&quot;, &quot;silver&quot;, &quot;gold&quot;
+</code></pre><h2 id="202ad5ed-0f10-80fa-9b39-e797ec844e79" class="">Animation &amp; Performance Control</h2><h3 id="202ad5ed-0f10-8067-b566-c02ba3b78365" class="">Screen Updates</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8040-928c-f3f8a981a3c5" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">screen.tracer(0)       # Turn off animation (faster drawing)
+screen.update()        # Manually update screen
+screen.tracer(1)       # Turn animation back on
+screen.tracer(n)       # Update every n-th regular screen update
+</code></pre><h2 id="202ad5ed-0f10-8077-8973-ddc1feead2f1" class="">Event Handling</h2><h3 id="202ad5ed-0f10-80dd-adc5-e7d62990e2dc" class="">Mouse Events</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8037-9525-fb11538cce75" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">def click_handler(x, y):
+    t.goto(x, y)
+
+screen.onclick(click_handler)        # Handle mouse clicks
+screen.onscreenclick(click_handler)  # Same as onclick
+</code></pre><h3 id="202ad5ed-0f10-8010-bc2c-ddb487aac5c6" class="">Keyboard Events</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-809b-81fe-d4d0670d05c0" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">def move_up():
+    t.setheading(90)
+    t.forward(20)
+
+screen.onkey(move_up, &quot;Up&quot;)     # Handle key press
+screen.onkeypress(move_up, &quot;Up&quot;) # Handle key press (alternative)
+screen.listen()                  # Start listening for events
+</code></pre><h2 id="202ad5ed-0f10-809a-94a6-ff7413b2e374" class="">Program Control &amp; Termination</h2><h3 id="202ad5ed-0f10-80c6-a18b-f245ffbb447d" class="">Keeping Window Open</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80e0-bc88-c5089f78cfa1" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">screen.exitonclick()   # Close when screen is clicked
+screen.mainloop()      # Keep window open indefinitely
+turtle.done()          # Alternative to mainloop()
+</code></pre><h2 id="202ad5ed-0f10-8098-b946-fa270fda0ac0" class="">Coordinate System &amp; Angles</h2><h3 id="202ad5ed-0f10-805e-8d4a-d21d8d46b5a7" class="">Understanding the Grid</h3><ul id="202ad5ed-0f10-80e8-a677-f19c50afacc6" class="bulleted-list"><li style="list-style-type:disc"><strong>Origin (0,0)</strong>: Center of screen</li></ul><ul id="202ad5ed-0f10-8051-ac76-f80408bcd80b" class="bulleted-list"><li style="list-style-type:disc"><strong>X-axis</strong>: Increases rightward, decreases leftward</li></ul><ul id="202ad5ed-0f10-809f-b4a7-e65610b28132" class="bulleted-list"><li style="list-style-type:disc"><strong>Y-axis</strong>: Increases upward, decreases downward</li></ul><h3 id="202ad5ed-0f10-800c-807c-d0d8babb45fd" class="">Angle System</h3><ul id="202ad5ed-0f10-8080-a108-e2a918f1bb1d" class="bulleted-list"><li style="list-style-type:disc"><strong>0°</strong>: East (right)</li></ul><ul id="202ad5ed-0f10-800c-97de-fcfe63f176be" class="bulleted-list"><li style="list-style-type:disc"><strong>90°</strong>: North (up)</li></ul><ul id="202ad5ed-0f10-8055-a410-c543b4ac26a3" class="bulleted-list"><li style="list-style-type:disc"><strong>180°</strong>: West (left)</li></ul><ul id="202ad5ed-0f10-803f-9f29-ca8270e563f9" class="bulleted-list"><li style="list-style-type:disc"><strong>270°</strong>: South (down)</li></ul><h2 id="202ad5ed-0f10-80c2-b642-e7dc8b815687" class="">Essential Patterns &amp; Examples</h2><h3 id="202ad5ed-0f10-8012-9c37-d14973a3ac9b" class="">Basic Shapes</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-802e-86ec-cd5e2253cc5d" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># Square
+for i in range(4):
+    t.forward(100)
+    t.right(90)
+
+# Triangle
+for i in range(3):
+    t.forward(100)
+    t.right(120)
+
+# Star
+for i in range(5):
+    t.forward(100)
+    t.right(144)
+
+# Hexagon
+for i in range(6):
+    t.forward(100)
+    t.right(60)
+</code></pre><h3 id="202ad5ed-0f10-8066-9541-f1969bf40756" class="">Filled Circle</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8050-9f5f-ecea18ec5f47" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t.fillcolor(&quot;yellow&quot;)
+t.begin_fill()
+t.circle(50)
+t.end_fill()
+</code></pre><h3 id="202ad5ed-0f10-80dc-90ed-e906aed536f8" class="">Spirals</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-806f-bcca-e0b65bb25237" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># Square spiral
+for i in range(100):
+    t.forward(i)
+    t.right(90)
+
+# Circular spiral
+for i in range(100):
+    t.forward(i)
+    t.right(91)
+</code></pre><h3 id="202ad5ed-0f10-8008-8748-e9c3843f3398" class="">Random Walk</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80dc-8bd6-ca5bfb0ba814" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">import random
+for i in range(100):
+    t.forward(20)
+    t.right(random.randint(0, 360))
+</code></pre><h2 id="202ad5ed-0f10-80f5-b8f7-f4416a499244" class="">Advanced Techniques</h2><h3 id="202ad5ed-0f10-8073-b20b-c0b6aaba898c" class="">Multiple Turtles</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8037-85c7-d3155e31bba1" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">t1 = turtle.Turtle()
+t2 = turtle.Turtle()
+t1.color(&quot;red&quot;)
+t2.color(&quot;blue&quot;)
+# Control each turtle independently
+</code></pre><h3 id="202ad5ed-0f10-8047-ac10-c09db9241d34" class="">Custom Shapes</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80b3-aa1d-dad95b911260" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># Register custom shape
+shape = ((0, 0), (10, 10), (20, 0), (10, -10))
+screen.register_shape(&quot;diamond&quot;, shape)
+t.shape(&quot;diamond&quot;)
+</code></pre><h3 id="202ad5ed-0f10-80ef-af63-c29d71ff6794" class="">Coordinate Transformations</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-80c0-a779-d01c62a0c851" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># Save current state
+pos = t.position()
+heading = t.heading()
+
+# Do some drawing...
+
+# Restore state
+t.goto(pos)
+t.setheading(heading)
+</code></pre><h2 id="202ad5ed-0f10-8022-98b2-f2888156fd6a" class="">Performance Tips</h2><ol type="1" id="202ad5ed-0f10-80a4-8af4-e04e3bff01c4" class="numbered-list" start="1"><li><strong>Use </strong><code><strong>screen.tracer(0)</strong></code> for complex drawings</li></ol><ol type="1" id="202ad5ed-0f10-8043-950e-cfefc255a30f" class="numbered-list" start="2"><li><strong>Set </strong><code><strong>speed(0)</strong></code> for fastest drawing</li></ol><ol type="1" id="202ad5ed-0f10-8000-a5ba-c465a35ddc6b" class="numbered-list" start="3"><li><strong>Hide turtle</strong> with <code>hideturtle()</code> during drawing</li></ol><ol type="1" id="202ad5ed-0f10-80f8-9c26-d2ac55b167e9" class="numbered-list" start="4"><li><strong>Update manually</strong> with <code>screen.update()</code></li></ol><h2 id="202ad5ed-0f10-80e7-adf4-d8b619e11506" class="">Common Debugging Tips</h2><ol type="1" id="202ad5ed-0f10-8041-b1c7-c85575f21184" class="numbered-list" start="1"><li><strong>Add </strong><code><strong>screen.exitonclick()</strong></code> to prevent window from closing</li></ol><ol type="1" id="202ad5ed-0f10-80f1-92fa-c0d45d7f8e34" class="numbered-list" start="2"><li><strong>Use </strong><code><strong>print(t.position())</strong></code> to debug positioning</li></ol><ol type="1" id="202ad5ed-0f10-80dc-bdc9-decce8cd5bba" class="numbered-list" start="3"><li><strong>Add delays</strong> with <code>time.sleep(1)</code> if drawing too fast</li></ol><ol type="1" id="202ad5ed-0f10-8069-ac63-c2c278e4eeed" class="numbered-list" start="4"><li><strong>Check pen state</strong> with <code>t.isdown()</code></li></ol><h2 id="202ad5ed-0f10-80af-95f0-dbb95aca4dd9" class="">Complete Template</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="202ad5ed-0f10-8026-9311-cf6e75746c93" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">import turtle
+import random  # if using random functions
+
+# Setup
+screen = turtle.Screen()
+screen.setup(800, 600)
+screen.bgcolor(&quot;white&quot;)
+screen.title(&quot;My Turtle Art&quot;)
+screen.colormode(255)  # if using RGB values
+
+# Create turtle
+artist = turtle.Turtle()
+artist.speed(0)  # Fastest
+artist.shape(&quot;turtle&quot;)
+artist.color(&quot;blue&quot;)
+
+# Optional: Turn off animation for complex drawings
+screen.tracer(0)
+
+# Your drawing code here
+for i in range(4):
+    artist.forward(100)
+    artist.right(90)
+
+# Update screen if tracer was turned off
+screen.update()
+
+# Keep window open
+screen.exitonclick()
+</code></pre><h2 id="202ad5ed-0f10-80d3-b069-d86951f70df9" class="">Quick Reference Summary</h2><table id="202ad5ed-0f10-80a4-879b-e6c3e81282c3" class="simple-table"><tbody><tr id="202ad5ed-0f10-8054-be2d-cebf5e326f61"><td id="l]\L" class="">Category</td><td id="wN&lt;f" class="">Key Functions</td></tr><tr id="202ad5ed-0f10-8084-8e0d-ddd86d37f7c2"><td id="l]\L" class=""><strong>Movement</strong></td><td id="wN&lt;f" class=""><code>forward()</code>, <code>backward()</code>, <code>right()</code>, <code>left()</code>, <code>goto()</code></td></tr><tr id="202ad5ed-0f10-80a2-868e-fd10dca43319"><td id="l]\L" class=""><strong>Pen</strong></td><td id="wN&lt;f" class=""><code>penup()</code>, <code>pendown()</code>, <code>pencolor()</code>, <code>fillcolor()</code></td></tr><tr id="202ad5ed-0f10-805f-ba4e-e74048c13fcf"><td id="l]\L" class=""><strong>Shapes</strong></td><td id="wN&lt;f" class=""><code>circle()</code>, <code>dot()</code>, <code>begin_fill()</code>, <code>end_fill()</code></td></tr><tr id="202ad5ed-0f10-80ae-9290-c2e45351f6d7"><td id="l]\L" class=""><strong>Info</strong></td><td id="wN&lt;f" class=""><code>position()</code>, <code>heading()</code>, <code>distance()</code>, <code>towards()</code></td></tr><tr id="202ad5ed-0f10-8050-ae00-e06318dfcfe7"><td id="l]\L" class=""><strong>Control</strong></td><td id="wN&lt;f" class=""><code>speed()</code>, <code>tracer()</code>, <code>update()</code>, <code>exitonclick()</code></td></tr></tbody></table><p id="202ad5ed-0f10-8051-b7fe-f55a85e230b0" class="">This comprehensive cheat sheet covers everything from basic turtle movement to advanced event handling and performance optimization, making it your complete reference for Python turtle graphics!</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
